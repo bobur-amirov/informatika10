@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} kitoblar {% endblock %}
+
+{% block body %}
+
+  <!-- textbook section start -->
+  <section class="text-book__section course-book login-test">
+    <div class="container center-center">
+      <div class="presintation-title">
+        <h3>
+          Test tizimiga kirish
+        </h3>
+      </div>
+    </div>
+  </section>
+  <!-- textbook section  end -->
+
+  <!-- login test section start -->
+  <section class="test-section">
+    <div class="container center-center">
+      <form class="form center-center" action="" method="post">
+           {% csrf_token %}
+        <div class="login-box__title center-center">
+          <p>Login</p>
+        </div>
+        <div class="inp-box">
+          <label for="ism">Ismingiz va Familyangiz:</label>
+            {% render_field form.username  id="ism" placeholder="O..."%}
+{#          <input type="text" name="" id="ism" placeholder="O...">#}
+        </div>
+
+        <div class="inp-box">
+          <label for="y-class">Sinifingiz:</label>
+            {% render_field form.password id="y-class" placeholder="10A" %}
+{#          <input type="text" name="" id="y-class" placeholder="10A">#}
+        </div>
+        <button type="submit">Yuborish</button>
+      </form>
+    </div>
+  </section>
+  <!-- login test section end -->
+
+
+{% endblock %}

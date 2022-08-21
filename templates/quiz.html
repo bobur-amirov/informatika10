@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} kitoblar {% endblock %}
+
+{% block body %}
+    <!-- textbook section start -->
+    <section class="text-book__section">
+        <div class="container center-center">
+            <div class="presintation-title">
+                <h3>
+                    Testlar
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- textbook section  end -->
+
+    <!-- textbook container start -->
+    <section class="sample-container textbooks">
+        <div class="container center-space__evenly">
+            {% for quiz in quizs %}
+                <a href="{% url 'quistion' quiz.id %}">
+                    <div class="book-sample center-space__between">
+                        <div class="book-img center-center">
+                            <img src="{% static 'img/test.jpg' %}" alt="">
+                        </div>
+                        <div class="book-title__box center-center">
+                            <h4 class="book-title">
+                                {{ quiz.title }}
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            <a href="{% url 'result_list' %}">
+                <div class="book-sample center-space__between">
+                    <div class="book-img center-center">
+                        <img src="{% static 'img/result.jpg' %}" alt="">
+                    </div>
+                    <div class="book-title__box center-center">
+                        <h4 class="book-title">
+                            Natijalar
+                        </h4>
+                    </div>
+                </div>
+            </a>
+
+
+        </div>
+    </section>
+    <!-- textbook container  end -->
+
+{% endblock %}

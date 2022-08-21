@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}  {% endblock %}</title>
+
+    <!-- css link start -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- css link end -->
+
+    <!-- ==========CDNJS link start========== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- ==========CDNJS link start========== -->
+</head>
+
+<body>
+<!-- header start -->
+<header class="header" id="header">
+    <div class="container ">
+        <nav class="menu center-space__evenly">
+            <div class="logo center-center">
+                <a href="{% url 'index' %}" class="logo-link">
+                    Informatika va <br> axborot texnologiyalari <br> 10-sinf
+                </a>
+            </div>
+
+            <div class="menu-items center-space__evenly">
+                <div class="dropdown">
+                    <button class="dropbtn">Elektron ta'lim resurslar</button>
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="dropdown-content">
+                        <a href="{% url 'video' %}">Vedio darsliklar</a>
+                        <a href="{% url 'taqdimotlar' %}">Taqdimotlar</a>
+                        <a href="{% url 'exhibition' %}">Ko'rgazmali qurollar</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">O'quv adabiyotlari</button>
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="dropdown-content">
+                        <a href="{% url 'textbooks' %}">Darsliklar</a>
+                        <a href="{% url 'handbook' %}">O'quv qo'llanmalar</a>
+                        <a href="{% url 'elec_textbook' %}">Elektron o'quv Ma'lumotlar</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Topshiriqlar</button>
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="dropdown-content">
+                        <a href="#">Produktiv darajadagi </a>
+                        <a href="#">Reproduktiv darajadagi</a>
+                        <a href="#">Qisman izlanishli </a>
+                        <a href="#">Creativ darajadagi </a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="{% url 'quiz' %}" class="dropbtn drop-link">Online baholash va nazorat qilish</a>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">O'qituvchi</button>
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="dropdown-content">
+                        <a href="{% url 'course_book' %}">Na'munaviy dars <br> ishlanmalari</a>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn drop-link">{{ user.username }}</a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="{% url 'logout' %}" class="dropbtn drop-link">Chiqish</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown">
+                        <a href="{% url 'login' %}" class="dropbtn drop-link">Kirish</a>
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="burger-btn center-space__between">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+        </nav>
+    </div>
+</header>
+<!-- header end -->
+
+{% block body %}
+
+{% endblock %}
+
+<!-- footer start -->
+<footer class="footer">
+    <div class="container center-center">
+        <h3 class="footer-title">
+            Muallif: Taylakov Umid Kuvandikovich | Mualliflik huquqi &copy; 2021
+        </h3>
+    </div>
+</footer>
+<!-- footer end -->
+
+<script>
+    const burgerBtn = document.querySelector(".burger-btn"),
+        menu = document.querySelector(".menu"),
+        menuItems = document.querySelector(".menu-items");
+
+    burgerBtn.addEventListener("click", () => {
+        menuItems.classList.toggle("active-btn");
+        menu.classList.toggle("active-btn");
+    });
+
+</script>
+</body>
+
+</html>

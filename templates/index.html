@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Informatika va axborot texnologiyalari 10-sinf {% endblock %}
+
+{% block body %}
+  <!-- main section start -->
+  <section class="main-section" id="main-section">
+    <div class="container">
+      <div class="main-box center-center">
+        <p class="main-text">
+          xush kelibsiz
+        </p>
+        <h3 class="main-title">
+          Informatika va axborot <br> texnologiyalari 10-sinf
+        </h3>
+        <div class="main-btn center">
+          <a href="{% url 'contents' %}" class="main-link">
+            <i class="fas fa-bars"></i>
+            Mundarija
+          </a>
+          <a href="./html/textbooks.html" class="main-link">
+            Darslik
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- main section end -->
+
+  <!-- blog section start -->
+  <section class="blog-section">
+    <div class="container flex-end-space__between">
+
+      <div class="blog-box center-flex__start">
+        <i class="fas fa-th"></i>
+        <h3 class="blog-title">
+          I BOB. MS EXCEL 2010 DA AMALLAR VA FORMULALAR
+        </h3>
+      </div>
+
+      <div class="blog-box center-flex__start">
+        <i class="fas fa-database"></i>
+        <h3 class="blog-title">
+          II BOB. MA’LUMOTLAR OMBORI
+        </h3>
+      </div>
+
+      <div class="blog-box center-flex__start">
+        <i class="fas fa-code"></i>
+        <h3 class="blog-title">
+          III BOB. DELPHI MUHITIDA ILOVALAR YARATISH
+        </h3>
+      </div>
+
+    </div>
+  </section>
+  <!-- blog section end -->
+
+  <!-- video section start -->
+  <section class="video-sectio">
+    <div class="container center-center">
+      <div class="video-about__box center-center">
+        <p class="video-about__text">
+          Video darslik
+        </p>
+        <h3 class="video-about__title">
+          Onlayn darslar orqali o'z bilimingizni <br> mustahkamlang
+        </h3>
+        <div class="video-border"></div>
+      </div>
+
+      <div class="video-content center-center">
+        <a href="./html/video.html" class="play-btn">
+          <i class="fas fa-play"></i>
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- video section end -->
+
+  <section class="bg"></section>
+
+{% endblock %}

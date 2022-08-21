@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} test {% endblock %}
+
+{% block body %}
+    <!-- textbook section start -->
+    <section class="text-book__section tests">
+        <div class="container center-center">
+            <div class="presintation-title">
+                <h3>
+                    Test
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- textbook section  end -->
+
+    <!-- test section start -->
+    <section class="test-section">
+        <div class="container">
+            <div class="test-quessions">
+                <form action="#" class="form-test" method="post">
+                    {% csrf_token %}
+
+                    <!-- test box start -->
+                    {% for q in quistions %}
+                        <div class="quiz-box">
+                            <div class="quiz-quession">
+                                <h3 class="quiz-title">
+                                    {{ q.name }}
+                                </h3>
+                            </div>
+                            {% for answer in answers %}
+                                {% if q.id == answer.question.id %}
+                                    <div class="quiz-answers">
+                                        <div class="test-box">
+                                            <input type="radio" name="{{ q.name }}" value="{{ answer.is_right }}">
+                                            <label class="quiz-text" for="">{{ answer.name }}</label>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    <!-- test box end -->
+
+                    <!-- Natijani olish tugmasi -->
+                    <div class="answer-btn">
+                        <button class="answer-button">
+                            Natijani ko'rish
+                        </button>
+                    </div>
+                    <!-- Natijani olish tugmasi -->
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- test section end -->
+
+{% endblock %}
+
+<script>
+    const testBox = document.querySelectorAll(".test-box"),
+        testInput = document.querySelectorAll(".test-box > input");
+
+    console.log(testInput);
+
+    testBox.forEach((item, i) => {
+        item.addEventListener("click", () => {
+            if (!testInput[i].checked) {
+                testInput[i].checked = true;
+            }
+        });
+    });
+
+
+    testBox.forEach((item, index) => {
+        item.addEventListener("click", function () {
+            testBox.forEach((item) => {
+                item.classList.remove("k-click");
+                this.classList.add("k-click");
+            });
+        });
+    });
+
+</script>

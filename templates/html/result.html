@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} natijalar {% endblock %}
+
+{% block body %}
+  <!-- textbook section start -->
+  <section class="text-book__section result">
+    <div class="container center-center">
+      <div class="presintation-title">
+        <h3>
+          Natijalar
+        </h3>
+      </div>
+    </div>
+  </section>
+  <!-- textbook section  end -->
+
+  <!-- result section container start -->
+  <section class="result-container">
+    <div class="container">
+
+      <form action="#" class="filter-user center-center" method="get">
+        <div class="filter-box center-center">
+          <label for="user-name">Foydalanuvchi ismi</label>
+            {% render_field results.form.user__username__icontains %}
+        </div>
+        <div class="filter-box center-center">
+          <label for="user-c">Sinf</label>
+            {% render_field results.form.user__first_name__icontains %}
+        </div>
+        <button type="submit" class="filter-btn">Natija</button>
+      </form>
+
+      <table class="test-result">
+        <tr class="result-name">
+          <th class="resutl-number">T/r</th>
+          <th class="result-name">F.I.SH</th>
+          <th class="result-class">Sinf</th>
+          <th class="result-class">Chorak</th>
+          <th class="result-answ">Umumiy savollar</th>
+          <th class="result-answ">To'g'ri javoblar</th>
+          <th class="result-user">Natija</th>
+          <th class="result-user">Sana va vaqt</th>
+        </tr>
+        {% for result in results.qs %}
+        <tr class="result-name users-table">
+          <td class="resutl-number">1</td>
+          <td class="result-name">{{ result.user.username }} </td>
+          <td class="result-class">10A</td>
+          <td class="result-answ">{{ result.quiz.title }}</td>
+          <td class="result-answ">{{ result.total_question }}</td>
+          <td class="result-answ">{{ result.corrent_question}}</td>
+          <td class="result-user">{{ result.total }}%</td>
+          <td class="result-user">{{ result.create_at|date:'Y-m-d H:i' }}</td>
+        </tr>
+          {% endfor %}
+      </table>
+    </div>
+  </section>
+  <!-- result section container end -->
+
+{% endblock %}
+  <script>
+
+
+
+
+    const testBox = document.querySelectorAll(".test-box"),
+      testInput = document.querySelectorAll(".test-box > input");
+
+    console.log(testInput);
+
+    testBox.forEach((item, i) => {
+      item.addEventListener("click", () => {
+        if (!testInput[i].checked) {
+          testInput[i].checked = true;
+        }
+      });
+    });
+  </script>
